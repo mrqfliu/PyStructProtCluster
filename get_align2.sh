@@ -3,7 +3,6 @@
 #DSUB -A root.project.P18Z19700N0076
 #DSUB -R cpu=2;mem=10240
 #DSUB -N 1
-
 # 获取当前工作目录
 current_path=$(pwd)
 
@@ -13,7 +12,6 @@ current_path=$(pwd)
 #任务2 并行实现结构两两比对
 # 获取 pdbs 文件夹中的所有 pdb 文件
 pdb_files=($(ls "$current_path/pdbs/" | grep '\.pdb$'))
-
 # 创建一个进程组
 set -m
 
@@ -32,7 +30,6 @@ for ((i=0; i<${#pdb_files[@]}-1; i++)); do
         : > "$output_file"
     fi
     command="./USalign/USalign $current_path/pdbs/$pro -dir2 $dir2 $list_file -outfmt 2"
-
     # 如果运行的进程数量小于并行数量，启动新进程
     if [ $running_count -lt $parallel_count ]; then
         (
