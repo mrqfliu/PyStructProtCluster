@@ -9,8 +9,6 @@ data['Similarity'] = data[numeric_cols].apply(lambda row: row.dropna().mean(), a
 # 提取PDB链ID并去重形成一个新的列表
 protein_ids_index = sorted(data['#PDBchain1'].drop_duplicates().values.flatten())
 protein_ids_columns = sorted(data['PDBchain2'].drop_duplicates().values.flatten())
-print(protein_ids_index)
-print(protein_ids_columns)
 
 
 # 创建一个初始的相似性矩阵，其中值为1 + 10**(-6)

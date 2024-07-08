@@ -10,12 +10,6 @@ current_path=$(pwd)
 #DSUB -oo $current_path/test/af_output/%J.out
 #DSUB -eo $current_path/test/af_output/%J.er
 
-source /home/share/huadjyin/home/fanguangyi/anaconda3/bin/activate
-conda activate saturn
-
-#任务1 获取pdb文件子列表
-python ./PdbFileListGenerator.py
-
 #任务2 并行实现结构两两比对
 # 获取 pdbs 文件夹中的所有 pdb 文件
 pdb_files=($(ls "$current_path/pdbs/" | grep '\.pdb$'))
@@ -63,13 +57,4 @@ done
 
 # 等待所有剩余的子进程结束
 wait
-
-#任务3 蛋白质结构对比堆叠后的txt文件
-python ./get_align.py
-
-#任务4 生成4x4的相似性矩阵，并将结果保存为.csv格式
-python ./similarity_matrix.py
-
-#任务5  输出.nwk文件，用于生成树状图
-python ./generate_tree.py
 
