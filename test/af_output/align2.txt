@@ -1,0 +1,4 @@
+#PDBchain1	PDBchain2	TM1	TM2	RMSD	ID1	ID2	IDali	L1	L2	Lali
+/home/share/huadjyin/home/fanguangyi/liuqifan/pdbs/5lui.pdb:A	6eqe.pdb:A	0.9354	0.9320	1.45	0.504	0.502	0.518	264	265	257
+/home/share/huadjyin/home/fanguangyi/liuqifan/pdbs/5lui.pdb:A	7dzv.pdb:A	0.9424	0.9287	1.47	0.504	0.496	0.514	264	268	259
+/home/share/huadjyin/home/fanguangyi/liuqifan/pdbs/5lui.pdb:A	8cru.pdb:A	0.9342	0.9342	1.43	0.530	0.530	0.547	264	264	256
