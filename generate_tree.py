@@ -18,10 +18,10 @@ similarity_matrix = data.values
 #     [1.000001, 1.000001, 0.9711,   0.98745],
 #     [1.000001, 1.000001, 1.000001, 0.97]])
 
-# 相似性矩阵转换成距离矩阵 (assuming distance = 1 - similarity)
+# Convert similarity matrix to distance matrix (assuming distance = 1 - similarity)
 distance_matrix = 1 - similarity_matrix
 
-# 将距离矩阵转换为链接矩阵
+# Convert distance matrix to link matrix
 condensed_distance_matrix = distance_matrix[np.triu_indices(distance_matrix.shape[0], k=0)]
 
 # print(condensed_distance_matrix)
@@ -29,7 +29,7 @@ linkage_matrix = linkage(condensed_distance_matrix, method='average')
 print(linkage_matrix)
 
 
-# 链接矩阵转换为生成树
+# Convert Link Matrix to Spanning Tree
 rootnode, nodelist = to_tree(linkage_matrix, rd=True)
 
 # Create a recursive function to label the tree
@@ -43,26 +43,26 @@ rootnode, nodelist = to_tree(linkage_matrix, rd=True)
 
 def add_newick_with_distances(node, parent=None):
     if node.is_leaf():
-        # 对于叶子节点，返回标签
+        # For leaf nodes, return labels
         return column_labels[node.id]
     else:
-        # 获取左右子节点的距离
+        # Obtain the distance between left and right child nodes
         left_dist = (node.dist - node.get_left().dist)/2
         right_dist =(node.dist - node.get_right().dist)/2
 
-        # 构造包含距离的字符串
+        # Construct a string containing distance
         left_subtree = f'{add_newick_with_distances(node.get_left(), node)}:{left_dist}'
         right_subtree = f'{add_newick_with_distances(node.get_right(),node)}:{right_dist}'
         return '(%s,%s)' % (left_subtree, right_subtree)
 
-# 构建生成树并写入文件
+# Build a spanning tree and write it to a file
 newick_tree = add_newick_with_distances(rootnode) + ';'
 with open('tree.nwk', 'w') as f:
     f.write(newick_tree)
 
 print('Newick tree:', newick_tree)
 
-## 绘制树状图
+## Draw a tree diagram
 #plt.figure()
 #dendrogram(linkage_matrix, labels=column_labels)
 #plt.title('UPGMA Hierarchical Clustering')
