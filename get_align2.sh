@@ -3,22 +3,22 @@
 #DSUB -A root.project.P18Z19700N0076
 #DSUB -R cpu=2;mem=10240
 #DSUB -N 1
-# 获取当前工作目录
+# Get the current working directory
 current_path=$(pwd)
 
 #DSUB -oo $current_path/test/af_output/%J.out
 #DSUB -eo $current_path/test/af_output/%J.er
 
-#任务2 并行实现结构两两比对
-# 获取 pdbs 文件夹中的所有 pdb 文件
+#Task 2: Parallel implementation structure pairwise comparison
+# Get all PDB files in the pdbs folder
 pdb_files=($(ls "$current_path/pdbs/" | grep '\.pdb$'))
-# 创建一个进程组
+# Create a process group
 set -m
 
-# 可调节的并行数量
-parallel_count=2  # 您可以根据需要修改这个值
+# Adjustable number of parallels
+parallel_count=2   # You can modify this value as needed
 
-# 已运行的进程数量
+# Number of running processes
 running_count=0
 
 for ((i=0; i<${#pdb_files[@]}-1; i++)); do
@@ -30,28 +30,28 @@ for ((i=0; i<${#pdb_files[@]}-1; i++)); do
         : > "$output_file"
     fi
     command="./USalign/USalign $current_path/pdbs/$pro -dir2 $dir2 $list_file -outfmt 2"
-    # 如果运行的进程数量小于并行数量，启动新进程
+    # If the number of running processes is less than the number of parallel processes, start a new process
     if [ $running_count -lt $parallel_count ]; then
         (
-            # 在子进程中执行命令
+            # Execute commands in child processes
             $command >> "$output_file"
         ) &
         running_count=$((running_count + 1))
     else
-        # 持续等待，直到有进程结束
+        # Continuously wait until a process ends
         while [ $running_count -ge $parallel_count ]; do
             wait -n
             running_count=$((running_count - 1))
         done
-        # 等待结束后再启动新进程
+        # Wait until the end before starting a new process
         (
-            # 在子进程中执行命令
+            # Execute commands in child processes
             $command >> "$output_file"
         ) &
         running_count=$((running_count + 1))
     fi
 done
 
-# 等待所有剩余的子进程结束
+# Wait for all remaining child processes to end
 wait
 
