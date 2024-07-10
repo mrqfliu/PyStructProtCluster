@@ -35,7 +35,7 @@ cd PyStructProtCluster
 ## Usage
 ﻿
 1. Place your PDB files in the `pdbs/` directory.
-2. Change the environment path in get_align.sh to your own.
+2. Change the environment path in `get_align.sh` to your own.
 3. Run the complete workflow with:
 ﻿
 ```bash
