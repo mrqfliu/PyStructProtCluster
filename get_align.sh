@@ -10,7 +10,7 @@ current_path=$(pwd)
 #DSUB -oo $current_path/test/af_output/%J.out
 #DSUB -eo $current_path/test/af_output/%J.er
 
-source /home/share/huadjyin/home/fanguangyi/anaconda3/bin/activate
+source /path/to/anaconda3/bin/activate
 conda activate saturn
 
 #任务1 获取pdb文件子列表
