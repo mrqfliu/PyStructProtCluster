@@ -27,7 +27,7 @@ PyStructProtCluster is a Python-based tool designed for the structural analysis 
 ﻿
 1. Clone the repository and ensure all dependencies are installed:
 ```bash
-git clone https://github.com/your_username/PyStructProtCluster.git
+git clone https://github.com/mrqfliu/PyStructProtCluster.git
 cd PyStructProtCluster
 ```
 2. Clone the US-align Repository:
