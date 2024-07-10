@@ -25,27 +25,33 @@ PyStructProtCluster is a Python-based tool designed for the structural analysis 
 ﻿
 ## Installation
 ﻿
-Clone the repository and ensure all dependencies are installed:
-﻿
+1. Clone the repository and ensure all dependencies are installed:
 ```bash
 git clone https://github.com/your_username/PyStructProtCluster.git
 cd PyStructProtCluster
 ```
-﻿
+2. Clone the US-align Repository:
+```bash
+git clone https://github.com/pylelab/USalign
+```
+3. Navigate to the Repository Directory and Compile:
+```bash
+cd USalign
+make
+```
+
 ## Usage
 ﻿
-1. Place your PDB files in the `pdbs/` directory.
-2. Change the environment path in `get_align.sh` to your own.
-3. Run the complete workflow with:
-﻿
+- **Prepare Your PDB Files**: Place PDB files into the `pdbs/` directory.
+- **Configure the Environment Path** in `get_align.sh`.
+- **Run the complete workflow**:
 ```bash
 bash get_align.sh
 ```
-﻿
 This command will execute the full process from PDB files to the generation of the `tree.nwk` file.
 ﻿
 Alternatively, you can run the steps individually for debugging or detailed analysis:
-﻿
+
 1. Generate pairwise comparison sublists: `PdbFileListGenerator.py`
 2. Compute similarity matrix in parallel: `get_align2.sh` (Edit `parallel_count` to set parallel processes)
 3. Stack alignment outputs: `get_align.py`
@@ -55,11 +61,11 @@ Alternatively, you can run the steps individually for debugging or detailed anal
 ## Scripts
 ﻿
 - `PdbFileListGenerator.py`: Generates sublists for pairwise structure comparisons.
-- `get_align2.sh`: Executes the pairwise alignment in parallel for performance.
-- `get_align.py`: Combines individual alignment results into a single text file (`combined_similarity.txt`).
-- `similarity_matrix.py`: Creates a similarity matrix from the alignment results.
+- `get_align2.sh`: Executes pairwise alignment in parallel.
+- `get_align.py`: Combines alignment results into `combined_similarity.txt`.
+- `similarity_matrix.py`: Creates a similarity matrix from alignment results.
 - `generate_tree.py`: Produces a `tree.nwk` file for dendrogram visualization.
-﻿
+
 ## Visualization
 ﻿
 Visualize the `tree.nwk` file using the iTOL web tool for an interactive dendrogram. [iTOL Website](https://itol.embl.de/)
