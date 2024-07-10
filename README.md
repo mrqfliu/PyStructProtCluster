@@ -2,7 +2,7 @@
 ﻿
 ## Overview
 ﻿
-PyStructProtCluster is a Python-based tool designed for the structural analysis of proteins through 3D structure files in PDB format. It generates dendrograms that illustrate the structural relationships between proteins, providing insights into their functions and evolutionary connections.
+PyStructProtCluster is a Python tool for structure based protein alignment and clustering. It can process protein three-dimensional structure files in PDB format and generate tree diagrams using UPGMA method to display the structural relationships between proteins. We used the Usalign open-source tool to generate pairwise similarity values for proteins, and finally generated a. nwk format dendrogram file through the similarity matrix, including branch names and distances between branches, which helps to understand protein function and reveal evolutionary relationships.
 ﻿
 ## Key Features
 ﻿
