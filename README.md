@@ -80,7 +80,7 @@ This software is provided "as is", without any warranty of any kind, express or 
 ﻿
 ## Contributing
 
-Contributions to the PyStructProtCluster project are welcome! As the sole author to date, I am open to feedback, bug reports, and enhancements that can help improve the tool for the community. Here's how you can contribute:
+Contributions to the PyStructProtCluster project are welcome! I am open to feedback, bug reports, and enhancements that can help improve the tool for the community. Here's how you can contribute:
 - Bug Reports: If you find any issues or bugs, please submit an issue with detailed information.
 - Feature Requests: If you have ideas for new features, feel free to open a new issue to discuss your ideas.
 - Pull Requests: If you have developed a fix or a new feature, submit a pull request. Make sure to follow the project's coding standards and include tests when applicable.
